@@ -1,7 +1,11 @@
-import { emberekLISTA } from "./adat.js";
+i//mport { emberekLISTA } from "./adat.js";
 import { sorTorles, szuresNevSzerint, tablazatRendez } from "./adatKezelo.js";
 import { megjelenites, tablazatOsszeallit } from "./fuggvenyek.js";
 import { adatokListaba } from "./urlapKezelo.js";
+import { getAdat } from "./aszinkron.js";
+
+getAdat("adat.json",init);
+
 /*  jelenítsük meg az adatainkat egy táblázatban az adatok div-ben
 az urlap div-ben legyen egy űrlap, amivel ilyen adatokat tudunk a táblázatba beletenni
 
@@ -23,16 +27,17 @@ Akkor fog lefutni, amikor megváltozik a szűrőmező tartalma
  
  */
 let nevIrany = 1;
-init(emberekLISTA);
+//init(emberekLISTA);
 nevSzuresEsemeny();
 
-adatokListaba(emberekLISTA)
 
 export function init(lista) {
+  console.log(lista.emberekLISTA)
   let txt = tablazatOsszeallit(lista);
   megjelenites(txt);
   nevRendezEsemeny(lista);
   sorTorlesEsemeny()
+  adatokListaba(lista)
 }
 
 function nevRendezEsemeny(lista) {
